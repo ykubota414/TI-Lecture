@@ -1,0 +1,323 @@
+:root {
+  --page-bg: #edf3f3;
+  --paper: #ffffff;
+  --text: #20292d;
+  --muted: #58666b;
+  --accent: #356b73;
+  --accent-soft: #e1eeee;
+  --line: #ccdada;
+  --media-line: #d9e2e2;
+  --math-bg: #f7fafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-bg);
+}
+
+body {
+  max-width: 1040px;
+  margin: 32px auto;
+  padding: 48px clamp(28px, 6vw, 76px) 80px;
+
+  color: var(--text);
+  background: var(--paper);
+
+  font-family:
+    "Hiragino Sans",
+    "Yu Gothic",
+    "YuGothic",
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: 17px;
+  line-height: 1.9;
+
+  border: 1px solid rgba(53, 107, 115, 0.16);
+  border-radius: 18px;
+
+  box-shadow:
+    0 2px 6px rgba(33, 54, 58, 0.04),
+    0 18px 50px rgba(33, 54, 58, 0.08);
+}
+
+
+/* =========================================================
+   Title
+   ========================================================= */
+
+body > h1 {
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "YuMincho",
+    serif;
+
+  font-size: clamp(2rem, 5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+}
+
+body > h3 {
+  margin: 0.8rem 0 0;
+
+  color: var(--muted);
+  text-align: center;
+
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+
+/* Cocoa HTML Writerが作った空行を非表示にする */
+
+body > p.p1 {
+  display: none;
+}
+
+
+/* =========================================================
+   Main text
+   ========================================================= */
+
+.lecture-content {
+  margin-top: 3.5rem;
+  font-size: 1rem;
+}
+
+.lecture-content section {
+  margin: 0;
+}
+
+.lecture-content p {
+  margin: 1em 0;
+}
+
+.lecture-content h2 {
+  margin: 3.5em 0 1.3em;
+  padding: 0.65em 0.85em;
+
+  color: #244d53;
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent-soft) 0%,
+      rgba(225, 238, 238, 0.45) 70%,
+      rgba(225, 238, 238, 0) 100%
+    );
+
+  border-left: 6px solid var(--accent);
+  border-radius: 6px;
+
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.lecture-content h2:first-child {
+  margin-top: 0;
+}
+
+.lecture-content h3 {
+  margin: 2.4em 0 1em;
+  padding-bottom: 0.35em;
+
+  color: #2d555b;
+
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.lecture-content strong {
+  color: #245e67;
+  font-weight: 700;
+}
+
+.lecture-content ul {
+  margin: 1.2em 0 1.4em 1.7em;
+  padding: 0;
+}
+
+.lecture-content li {
+  margin: 0.5em 0;
+  padding-left: 0.15em;
+}
+
+
+/* =========================================================
+   Mathematical displays
+   ========================================================= */
+
+.display-math {
+  margin: 1.5em 0;
+  padding: 1rem 1.25rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  background: var(--math-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   Images and videos
+   ========================================================= */
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6rem auto;
+
+  background: #ffffff;
+
+  border: 1px solid var(--media-line);
+  border-radius: 10px;
+
+  box-shadow: 0 5px 18px rgba(29, 50, 54, 0.07);
+}
+
+video {
+  object-fit: contain;
+}
+
+.video-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+
+  margin: 1.8rem 0;
+}
+
+.video-row video {
+  width: min(100%, 420px);
+  margin: 0;
+}
+
+
+/* =========================================================
+   Section separators
+   ========================================================= */
+
+.page-break {
+  margin: 3.8rem 0 3rem;
+
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+
+/* =========================================================
+   Existing text colors
+   ========================================================= */
+
+.blue {
+  color: #1558d6;
+}
+
+.teal {
+  color: #008b8b;
+}
+
+.red {
+  color: #c62828;
+}
+
+.orange {
+  color: #d97706;
+}
+
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 760px) {
+  html {
+    background: var(--paper);
+  }
+
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 30px 20px 56px;
+
+    font-size: 16px;
+
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .lecture-content {
+    margin-top: 2.5rem;
+  }
+
+  .lecture-content h2 {
+    margin-top: 2.8em;
+    padding: 0.55em 0.65em;
+  }
+
+  .display-math {
+    margin-right: -8px;
+    margin-left: -8px;
+    padding: 0.8rem;
+  }
+
+  .video-row {
+    gap: 18px;
+  }
+}
+
+
+/* =========================================================
+   Printing
+   ========================================================= */
+
+@media print {
+  html {
+    background: #ffffff;
+  }
+
+  body {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .page-break {
+    margin: 0;
+    border: 0;
+    break-before: page;
+  }
+
+  img,
+  video,
+  .display-math {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Interactive Haldane wave-packet viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <main>
+    <h1>Interactive Haldane wave-packet viewer</h1>
+
+    <p>
+      This is a browser-based interactive viewer for Haldane wave-packet data.
+      The current version is a placeholder; the real precomputed data will be added next.
+    </p>
+
+    <canvas id="lattice-canvas" width="900" height="650" aria-label="Haldane lattice visualization">
+      Your browser does not support canvas.
+    </canvas>
+
+    <div class="controls">
+      <label for="time-slider">time</label>
+      <input id="time-slider" type="range" min="0" max="100" value="0">
+      <output id="time-output" for="time-slider">0</output>
+    </div>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

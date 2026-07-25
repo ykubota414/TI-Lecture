@@ -1,25 +1,519 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>Haldane wave-packet talk</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一般講演「現象の中のトポロジー」</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+<link rel="stylesheet" href="style.css">
+
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]],
+        packages: {"[+]": ["color"]}
+      },
+      loader: {load: ["[tex]/color"]},
+      svg: {fontCache: "global"}
+    };
+  </script>
+  <script type="text/javascript" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
-  <main>
-    <h1>Haldane wave-packet talk</h1>
+<p class="p1"><span class="s1">　</span></p>
+<h1 style="margin: 0 0 16.1px; font: 24s.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>一般講演　"現象の中のトポロジー"</b></span></h1>
+<h3 style="margin: 0 0 14.0px; font: 18.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>窪田　陽介</b></span><span class="s3"><b> </b></span><span class="s1"><b>（京都大学）</b></span></h3>
 
+<div class="lecture-content">
+<section>
+<h2>1. ばねの振動の力学</h2>
+<h3>高校物理におけるばね</h3>
+<p>まず，高校物理でも習うばねの振動の話から始めましょう．</p>
+<p>壁と一つの質点をばねでつないだとき，その運動は</p>
+<div class="display-math">
+      \[
+      mx''(t)=-kx(t)
+      \]
+    </div>
+<p>という運動方程式で表されます．高校3年生で物理を選択している方であれば，このような式を見たことがあるかもしれません．少しだけ説明すると，</p>
+<ul>
+<li>\(x(t)\)：質点の位置．固定した基準位置からのずれ．</li>
+<li>\(x'(t)\)：速度．この値が大きいほど速く動いている．</li>
+<li>\(x''(t)\)：加速度．この値が大きいほど加速（速度が上昇）している．</li>
+</ul>
+<p>例えば，自動車が発進するときにアクセルを強く踏むと，体が後ろに引っ張られるような感覚がありますが，あれが加速度による効果です．</p>
+<p>これを踏まえて上の方程式を見てみると，質点が右へずれると左向きの力が働き，逆に左へずれると右向きの力が働く，つまりばねは質点を元の位置へ戻そうとしている，ということが読み取れます．</p>
+<p>実は，この方程式は高校数学で学ぶ範囲の知識だけで解くことができます．解は</p>
+<div class="display-math">
+      \[
+      x(t)=A\sin\left(\sqrt{\frac{k}{m}}\,t+\theta\right)
+      \]
+    </div>
+<p>という形になります．右辺に出てくるのは三角関数です．\(A\) や \(\theta\) という定数は，\(t=0\) で質点がどんな様子であったか（初期条件）から決まります．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/simple_harmonic_motion.mp4"
+    controls
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<h3>連成ばね</h3>
+<p>ここまでは，一つの物体を一本のばねで壁につないだ場合を考えてきました．それでは次に，物体とばねをたくさんつないだ場合を考えてみましょう．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/coupled_spring.png"
+    alt="画像"
+    width="900"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>\(n\) 個の小さな物体を横一列に並べ，隣り合う物体どうしをばねでつなぎます．さらに，両端も壁にばねでつないでおきます．それぞれの質点の，釣り合いの位置からのズレを \(x_1(t),x_2(t),\ldots,x_n(t)\) と書きましょう．</p>
+<p>このときの運動方程式も，先ほどの同様に立てることができます．このようになります．</p>
+<div class="display-math">
+      \[
+      \begin{array}{rccccccc}
+      mx_1'' = &amp; -2kx_1 &amp; +kx_2 &amp; &amp;&amp;&amp;&amp; \textcolor{red}{+kx_n} \\
+      mx_2'' = &amp; +kx_1 &amp; -2kx_2 &amp; +kx_3 &amp;&amp;&amp;&amp; \\
+      mx_3'' = &amp; &amp; +kx_2 &amp; -2kx_3 &amp; +kx_4 &amp;&amp;&amp; \\
+      mx_4'' = &amp; &amp;&amp; +kx_3 &amp; -2kx_4 &amp; +kx_5 &amp;&amp; \\
+      \vdots &amp; &amp; &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; \\
+      mx_{n-1}'' = &amp; &amp;&amp;&amp;&amp; +kx_{n-2} &amp; -2kx_{n-1} &amp; +kx_n \\
+      mx_n'' = &amp; \textcolor{red}{+kx_n} &amp;&amp;&amp;&amp; &amp; +kx_{n-1} &amp; -2kx_n
+      \end{array}
+      \]
+    </div>
+<p>これは微分の出てくる連立方程式で，一つのばねの場合と比べるとかなり複雑になりました．かなり迫力がありますが，実は，大学1年生で学ぶ<strong>線形代数</strong>という数学を使うと，この方程式をきれいに整理することができます．</p>
+<p>その解き方は大学で勉強するのを待ってもらうことにして，ここでは天下り式に結論をお見せします．（上の赤字の項は，本当はない方が正しいのですが，これをつけておくと解がかなり簡単になるので，ここでは少しずるをして付け加えておきます．）</p>
+<p>まず，この方程式には，つないだ物体の数が \(n\) 個なら \(n\) 個の，基本となる解があります．これを <strong>固有振動</strong>といいます．数式では，\(r=1,\ldots,n\) に対して，</p>
+<div class="display-math">
+      \[
+      x_{r,j}(t)
+      =
+      \sin\left(\frac{2\pi rj}{n}-\omega_rt+\theta\right),
+      \qquad
+      \omega_r
+      =
+      2\sqrt{\frac{k}{m}}
+      \left|\sin\left(\frac{\pi r}{n}\right)\right|
+      \]
+    </div>
+<p>という形で表されます．ここで，\(\omega_r\) は<strong>固有振動数</strong>と呼ばれる数で，この値が大きいほど一周期の振動にかかる時間が短くなります．これを動画で表示すると以下のようになります．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/coupled_spring.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>色の明るいところが振幅の大きい振動をしているところです．この図では縦軸を振動数の2乗 \(\omega^2\) にとっています．だから，上の方の固有振動の方が早く振動していることが見て取れると思います．</p>
+<p>この固有振動という言葉は，高校物理ではむしろ音の振動や弦の振動などの「波」の分野で出てくるものです．実は，長く連なったばねの運動はおおよそ波と同じような振る舞いをするのです．</p>
+<p>特に，連成ばねの運動，つまり上の微分方程式の解は，これら \(n\) 種類の固有振動を重ね合わせた</p>
+<div class="display-math">
+      \[
+      x_j(t)
+      =
+      \sum_{r=1}^{n}A_rx_{r,j}(t)
+      =
+      \sum_{r=1}^{n}A_r
+      \sin\left(\frac{2\pi rj}{n}-\omega_rt+\theta\right)
+      \]
+    </div>
+<p>という形で表現できます．</p>
+</section>
+<hr class="page-break"/>
+<section>
+<h2>2. SSH（Su–Schrieffer–Heeger）模型</h2>
+<p>次に，少しだけ設定を変えてみます．</p>
+<p>今度は，強いばねと弱いばねという，二種類のばねを用意し，それらを交互につないでいきます．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/SSH.png"
+    alt="画像"
+    width="1000"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>このような模型は，物理学では SSH 模型と呼ばれています．二つのばね定数を，\(k_1,k_2\) と書きましょう．質点の位置を左から \(x_1,y_1,x_2,y_2,\ldots\) と書くことにします．</p>
+<p>この場合にも，先ほどと同じように運動方程式を書くと，\(K=k_1+k_2\) と置くと</p>
+<div class="display-math">
+      \[
+      \begin{array}{rcccccccc}
+      mx_{1}^{\prime\prime} =
+      &amp; -Kx_1 &amp; +\textcolor{blue}{k_1}y_1
+      &amp;&amp;&amp;&amp;&amp;&amp; \textcolor{red}{+\textcolor{teal}{k_2}y_n}
+      \\
+      my_{1}^{\prime\prime} =
+      &amp; +\textcolor{blue}{k_1}x_1 &amp; -Ky_1 &amp; +\textcolor{teal}{k_2}x_2
+      &amp;&amp;&amp;&amp;&amp;
+      \\
+      mx_{2}^{\prime\prime} =
+      &amp;&amp; +\textcolor{teal}{k_2}y_1 &amp; -Kx_2 &amp; +\textcolor{blue}{k_1}y_2
+      &amp;&amp;&amp;&amp;
+      \\
+      my_{2}^{\prime\prime} =
+      &amp;&amp;&amp; +\textcolor{blue}{k_1}x_2 &amp; -Ky_2 &amp; +\textcolor{teal}{k_2}x_3
+      &amp;&amp;&amp;
+      \\
+      \vdots
+      &amp;&amp;&amp;&amp; \ddots &amp; \ddots &amp; \ddots
+      &amp;&amp;
+      \\
+      mx_{n}^{\prime\prime} =
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{teal}{k_2}y_{n-1} &amp; -Kx_n &amp; +\textcolor{blue}{k_1}y_n
+      \\
+      my_{n}^{\prime\prime} =
+      &amp; \textcolor{red}{+\textcolor{teal}{k_2}x_1}
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{blue}{k_1}x_n &amp; -Ky_n
+      \end{array}
+      \]
+    </div>
+<p>のようになります．</p>
+<hr class="page-break"/>
+<p>この場合も，先ほどと同様の数学的手続きによって方程式を解くことができます．やはり詳細は省きますが，ここでは固有振動は，\(j=1,\ldots,n\) に対して</p>
+<div class="display-math">
+      \[
+      \begin{aligned}
+      x_{j,-}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,-}t+\theta\right),
+      &amp;\quad
+      y_{j,-}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,-}t+\theta+\phi_r\right),
+      \\
+      x_{j,+}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,+}t+\theta\right),
+      &amp;
+      y_{j,+}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,+}t+\theta+\phi_r\right)
+      \end{aligned}
+      \]
+    </div>
+<p>となります．ここで，角度 \(\phi_r\) と振動数 \(\omega_{r,\pm}\) という二つの謎のパラメータが出てきていて，これらはあとで少し説明します．こちらも動画にするとこんな感じになります．
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/periodic_SSH.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+見ての通り，今回は固有振動数が分布している区間が二つに分かれていて，その中間には固有振動がありません．</p>
+<hr class="page-break"/>
+<p>さて，実は今回は前回と大きな違いが一つあります．さっきは「赤字の項があってもなくても足して変わらないのでズルをして付け加える」と言ったのですが，今回は実はそうはいかないのです．（この赤字の項の話は繰り返し出てくるので言葉を導入しておきます．赤字項がある場合を<strong>周期端</strong>，ない場合を<strong>固定端</strong>と呼びます．）実は赤字の項を外すと，ほとんどの固有振動数は先ほどの二つの区間に分かれたままなのですが，さっき空白だった部分の中央に，ふたつ新しく固有振動が現れるのです．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/Dirichlet_SSH.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>この固有振動を見てみると，ひとつの固有振動は左端の点だけがビュンビュン振動していて，それ以外の点はほとんど動いていません．一方でもうひとつはその逆で，右端の点だけが振動していてそれ以外の点はほとんど動きません（実はこの説明は少しの嘘を含みます）．その様子は，他の固有振動たちとは大きく異なることが動画から見て取れるかと思います．このような特殊な振動を，ここでは<strong>端振動</strong>と呼ぶことにしましょう．</p>
+<p>この端振動の面白いところは，\(k_1\) を固定して \(k_2\) を色々動かしたとき，この端振動の存在の様子が振る舞いが切り替わる瞬間があるということです．これも動画にしてみると明白です．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/SSH_spec.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>\(k_2\) が \(k_1\) とぴったり一致する，つまりただの連成振動になる瞬間が，切り替わりのタイミングです．この瞬間，固有振動数が密に分布している高低ふたつの区間が衝突します．その手前，\(k_2\lt1\) のときには，中間の空白の中には固有振動数はありません．一方で，\(k_2\lt1\) のときには，中間の空白の中に固有振動数が発生しています．そしてこのふたつは必ずペアになっています．</p>
+</section>
+<hr class="page-break"/>
+<section>
+<p>実は，理由を飛ばして結論だけ言うと，この SSH 模型の方程式の解法というのは，その背後にある<strong>曲線</strong>の存在が隠れています．その曲線は，ばねの形状のような素朴な幾何学的実体とは関係なく，純粋に方程式の数学的性質から像を結ぶ，抽象的な曲線です．専門用語では波数空間とか Brillouin 領域という名前がついています．その曲線とは，\((k_1,0)\) を中心とする半径 \(k_2\) の円周です．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/ssh_winding_number.png"
+    alt="画像"
+    width="1000"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>この円周上に等間隔に点 \(\mathrm{A}_1\), \(\mathrm{A}_2\), \(\ldots\), \(\mathrm{A}_n\) と取ります．三角関数を知っている人に向けてこれらの点の座標を式で書いておくと</p>
+<div class="display-math">
+      \[
+      \mathrm{A}_r=
+      \left(
+      k_1+k_2\cos\frac{2\pi r}{n},
+      k_2\sin\frac{2\pi r}{n}
+      \right)
+      \]
+    </div>
+<p>となります．このとき，\(\mathrm{O}=(0,0)\)，\(\mathrm{P}=(1,0)\)とおいて，先ほどお見せした固有振動の式に出てくる \(\omega_r\) と \(\phi_r\) は，それぞれ</p>
+<div class="display-math">
+      \[
+      \omega_{r,\pm}^2= \frac{K}{m} \pm |\mathrm{OA}_r|,
+      \qquad
+      \phi_r=\angle\mathrm{POA}_r
+      \]
+    </div>
+<p>となります．このことから特に，曲線が原点 \( \mathrm{O}\) と交わらなければ，固有振動数の分布が \( \omega_{r,+}\) たちの分布する上の区間と  \( \omega_{r,-}\) たちのあつまる下の区間の二つに分離することがわかります．</p>
+<p>そしてさらに，固定端（赤字項なし）において端振動が発生するかどうかは，ちょうどこの円周が原点 \(\mathrm{O}\) の周りを回っているかどうかに対応しているのです．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/SSH_curve_spec.mp4"
+    controls
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<p>さらに「実は」を重ねます．実は，ここで起きていた「微分方程式の背後にある曲線が隠れていて，この曲線が固有振動や端振動の有無を制御している」という現象は，もっと一般的な状況でも成り立ちます．例えば，ちょっともはやばねを使って実現するのは難しいのですが，純粋に数学の問題として</p>
+<div class="display-math">
+      \[
+      \begin{array}{rcccccccc}
+      mx_{1}^{\prime\prime} =
+      &amp; -Kx_1 &amp; +\textcolor{blue}{k_1}y_1
+      &amp;&amp;&amp;&amp;&amp;&amp; \textcolor{red}{+\textcolor{teal}{k_2}y_n}
+      \\
+      my_{1}^{\prime\prime} =
+      &amp; +\textcolor{blue}{k_1}x_1 &amp; -Ky_1 &amp; +\textcolor{teal}{k_2}x_2
+      &amp;&amp; +\textcolor{orange}{k_3}x_3 &amp;&amp;&amp;
+      \\
+      mx_{2}^{\prime\prime} =
+      &amp;&amp; +\textcolor{teal}{k_2}y_1 &amp; -Kx_2 &amp; +\textcolor{blue}{k_1}y_2
+      &amp;&amp;&amp;&amp;
+      \\
+      my_{2}^{\prime\prime} =
+      &amp;&amp;&amp; +\textcolor{blue}{k_1}x_2 &amp; -Ky_2 &amp; +\textcolor{teal}{k_2}x_3
+      &amp;&amp;&amp;
+      \\
+      \vdots
+      &amp;&amp; +\textcolor{orange}{k_3}y_1 &amp;&amp; \ddots &amp; \ddots &amp; \ddots
+      &amp;&amp;
+      \\
+      mx_{n}^{\prime\prime} =
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{teal}{k_2}y_{n-1} &amp; -Kx_n &amp; +\textcolor{blue}{k_1}y_n
+      \\
+      my_{n}^{\prime\prime} =
+      &amp; \textcolor{red}{+\textcolor{teal}{k_2}x_1}
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{blue}{k_1}x_n &amp; -Ky_n
+      \end{array}
+      \]
+    </div>
+<p>のような方程式を考えてみます．ちょっとわかりにくいかもしれませんが，青字の \(k_1\) の項の右上と左下に橙字の \(k_3\) が係数の項を加えたものです．隣接する質点同士に加えて，3つ先の質点とも押し合っているというものです．無茶を承知でばねの絵で表現するなら，こんな感じでしょうか．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/spring_artificial.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>ここでは，固有振動の様子は以下のような曲線によって制御されています．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/winding2_curve_plot.png"
+    alt="画像"
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>さっきは円でしたが，今度はもう少し複雑なカーブを描く曲線が出てきました．ここでは，曲線が \(0\) の周りを \(2\) 回巻きついています．この曲線上から等間隔に点を取ると，それらの点の原点からの距離とか角度を使って周期端（赤字項あり）の場合の固有振動を表示することができます．</p>
+<p>そしてさらに，固定端（赤字項なし）の場合の固有振動を動画にすると次のようになります．ここでは，左端に局在した端振動が2つ，右端に局在した端振動が2つ，それぞれ存在することが見て取れます．
+</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/Dirichlet_winding2.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<p>これらふたつの例を含む，たいへん一般的な事実として，この種の微分方程式においては，次が成り立ちます．</p>
+<ul>
+<li>方程式に対応する曲線が原点 \(\mathrm{O}\) を通らないとき，周期端（赤字項あり）の固有振動数の分布は二つの区間に分離する．</li>
+<li>固定端（赤字項なし）において，以下の関係が成り立つ．
+<div class="display-math">
+      \[
+      (\text{左端に局在する端状態の数}) = -(\text{対応する曲線が原点\(\mathrm{O}\)の周りを巻きつく回数})
+      \]
+    </div>
+</li>
+</ul>
+<p>右辺の数のことを，トポロジーでは<strong>巻きつき数</strong>と呼びます．この等式は，物性物理（まだ物質の話は出てきていませんが）の業界で<strong>バルク・境界対応</strong>と呼ばれている一般原理の例のうちのひとつです．</p>
+<hr class="page-break"/>
+<h2>3. トポロジーの考え方 </h2>
     <p>
-      This is a test page for the Haldane wave-packet visualization.
+      この事実，つまり端に局在する端振動の個数が背後にある曲線の巻きつき数と一致するという事実が，何を意味するかについて，もう少し吟味してみましょう．
     </p>
 
-<h2>Haldane Schrödinger movie</h2>
+    <p>
+      巻きつき数には，ある興味深い性質があります．それは，この数が曲線を少し動かした程度ではかわらないという不変性です．
+       2 周巻きついている曲線を，ほんの少しずらしただけでは， 1 周になることはありません．それどころか，曲線をもっと大きく動かして，まったく異なる見た目の曲線にまで変形したとしても，それが連続的な変形で，かつ原点を横切らない限り，巻きつき数を 2 から 1 に変えることはできません．巻きつき数が変わるときには，必ず曲線が原点を通過しています．
+	</p>
+<div class="video-row">
+  <video controls width="420">
+    <source src="videos/ssh_curve_spec.mp4" type="video/mp4">
+  </video>
 
-<video controls loop muted playsinline width="100%">
-<source src="assets/haldane_wavepacket.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+  <video controls width="420">
+    <source src="videos/winding2_curve_spec.mp4" type="video/mp4">
+  </video>
+</div>
+	<p>
+      このように，連続変形に関して不変な性質や量に特に興味を持ってそれを研究するのが，<strong>トポロジー</strong>という数学の分野です．
+    </p>
 
-  </main>
+    <p>
+      この巻きつき数の性質は，先ほどの等式を介して端振動に引き継がれます．
+      つまり，ばね定数を少しいじって別のばね列を組み立てても，端状態がいくつ残るかという数は変化しない，ということです．
+    </p>
+
+    <p>
+      ごく素朴に考えると，SSH模型で端に局在していた振動が，ばね定数などの条件を動かすにつれてだんだん中央の方に広がっていき，気づいたときには端状態ではなくなっている，という連続的な変化は，起きてもおかしくないもののように思えます．壁や床に抑えられているわけでもないのに，ある動きが禁止されているというのはおかしなことです．
+    </p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/edge_to_bulk_mode.mp4"
+    controls
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+    <p>
+      しかし実際にはそうはならず，ある時点で端に局在しているならば，そこからばね定数を連続的に動かしても，端状態は端に局在したままであり， 1 つなら 1 つ， 2 つなら 2 つと個数が保たれます．
+      また，その固有振動数もまた，空白の中央にピタッと固定されていて，そこから動きません．端状態が保たれなくなるのは高低ふたつの固有振動数区間が接するときであり，これは曲線が原点を通過する瞬間です．</p>
+	<p>こうした性質を持つことを，端振動は<strong>頑健</strong>（robust）であると言います．これは別の言い方をすると，\(k_1\) や \(k_2\) を精密に調整しなくても，おざなりな準備をして適当に実験をしても，重要な大小関係 \(k_1 < k_2\) さえ保たれていれば，端振動を見つけることができる，ということを意味しています．これは物理現象としても興味深く，また利用の余地を感じさせるものです．
+    </p>
+
+<hr class="page-break"/>
+<section>
+<h2>4. 量子ホール効果</h2>
+    <p>
+      先ほどチラッと言葉を出しましたが，この種の現象は，例えば金属のような物体の性質を調べる物性物理学において，特に注目されて利用されています．
+    </p>
+
+    <p>
+      実は，今回ご説明した微分方程式やその解き方は，物理に限らず様々な現象を記述する微分方程式に対してかなり普遍的に適用可能な手法です．特に，熱，波，量子力学の 3 つは，大きく共通する数学的基礎を持っています．
+    </p>
+<div class="display-math">
+      \[
+	\text{熱: } \ \frac{d\boldsymbol{x}}{dt} = H\boldsymbol{x}, \qquad 	\text{波: } \ \frac{d^2\boldsymbol{x}}{dt^2} = H\boldsymbol{x}, \qquad 
+	\text{量子: } \  i\hbar  \frac{d\boldsymbol{x}}{dt} = H\boldsymbol{x}.
+      \]
+    </div>
+    <p>
+      ここまで考えてきたばねの模型も量子力学の模型に置き換えることができます．先ほどの SSH 模型は，ポリアセチレン分子の中を動く電子を記述する模型と，数学的構造を共有しています．特に，ポリアセチレンにおいても，端に局在している電子を見つけることができるのです．
+    </p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/polyacetylene.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+    <p>
+      そして，電子の運動を記述する量子力学においては，トポロジー的な現象は，ばねの模型のような直線上，一次元的な模型だけでなく，平面上，すなわち二次元的に分布する模型において，より重要な現象が現れます．
+    </p>
+
+<hr class="page-break"/>
+    <p>
+      金属の板を用意し，この金属板に対して垂直な方向に磁場をかけます．その状態で，左から右へ電流を流します．すると，磁場の方向とも電流の方向とも直交する，もう一つの方向に電圧が発生します．これがホール効果です．これも高校物理に含まれるので，皆さん近いうちに勉強されるかと思います．
+    </p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/hall_bar.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+    <p>
+      このホール効果において，磁場が十分に強く，温度が十分に低いときには，
+    </p>
+<div class="display-math">
+      \[
+	\sigma_{\mathrm{Hall}} = \frac{I}{V} = n \cdot \frac{e^2}{h} \qquad (\text{\( n \) はある整数})
+	\]
+    </div>
+    <p>
+	という関係が成り立つことが知られています．ここで， \( I \) は流した電流，\(V \) はそれによって生じた電圧です．それらの比である \( \sigma_{\mathrm{Hall}} \) を伝導度と呼びます．このように伝導度が飛び飛びの値しか取らなくなる現象を<strong>量子ホール効果</strong>といいます．これは1980年に von Klitzing によって初めて実験的に観測されました．
+    </p>
+
+    <p>
+      量子力学に基づいて微分方程式を立て，固有振動やその振動数を解析すると，以下がわかります．
+    </p>
+
+    <ul>
+      <li>
+        周期端（赤字項あり）の場合，固有振動数は二つの区間内に密に分布する．
+      </li>
+      <li>
+        固定端（赤字項なし）の場合，二つの区間の間の空白が新たに生じた固有振動数によって埋まる．
+      </li>
+    </ul>
+
+    <p>
+      固定端において新たに発生した固有振動の様子を動画にすると次のようになります．
+    </p>
+
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/haldane_wavepacket.mp4"
+    controls
+    width="600"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+
+    <p>
+      今度は，波のかたまり (wave packet) が，境界上を反時計回りに運搬されていることがわかります．これは電子のかたまりなので，運搬されると電流が流れます．そして，伝導度はこのかたまりの個数の定数倍になります．個数というのは整数値なので，量子ホール効果が得られるというわけです．
+    </p>
+
+<hr class="page-break"/>
+	<p>さて，SSH模型の運動が数学的にはある曲線によって制御されていたように，この系を記述する微分方程式もまた，それを解く過程で，ある図形（空間）によって制御されます．</p>
+	<p>
+	それは（素朴な意味で）物理的実体を持つ，我々が目で見たり住んだりできる空間というよりは，純粋に数学的構造として発見されるものです．
+	そしてそれはもはや平面の中の曲線のような想像しやすい対象はなくて，2次元の曲面（より正確には 2 次元トーラス）が，非常に高次元の空間 \( X \) の中に像を結びます．
+	ここで \(X \) とは，例えば関係式</p>
+<div class="display-math">
+\[
+\begin{array}{lll}
+a^2+x_1^2+y_1^2+x_2^2+y_2^2=a, &b^2+x_1^2+y_1^2+x_3^2+y_3^2=b,&c^2+x_2^2+y_2^2+x_3^2+y_3^2=c,\\
+(a+b-1)x_1+x_2x_3+y_2y_3=0,& (a+b-1)y_1+y_2x_3-x_2y_3=0,&(a+c-1)x_2+x_1x_3-y_1y_3=0,\\
+(a+c-1)y_2+x_1y_3+y_1x_3=0,&(b+c-1)x_3+x_1x_2+y_1y_2=0,&(b+c-1)y_3+x_1y_2-y_1x_2=0
+\end{array}
+\]
+</div>
+	<p>を満たす点 \( (a,b,c,x_1,y_1,x_2,y_2,z_1,z_2) \)の集まりという，9 次元空間のなかの 4 次元部分空間だったりします．</p>
+	<p>
+	このような空間は，もはや絵に描いて目で見ることはほとんど不可能です．しかし，抽象的な数学の力を使うことで，曲面が \( X \) のどこかの "穴" に "巻きついて" いてほどけない，というようなことが起きうることを論証することができます．これは素朴な直感を超えた論理です．そして，この "巻きつき" を数える整数（これには<strong>Chern数</strong>という名前がついています）が，まさに \( \sigma_{\mathrm{Hall}} \) の係数になることが知られています．これは幾何学においてはたいへん有名な整数であり，それが物理的実現を持つことは我々数学者にとっても驚くべきことでした．
+</p>
+
+<hr class="page-break"/>
+    <p>
+      最後に，この量子ホール効果の役に立つ側面についてお話ししようと思います．ここでは，先ほど説明した，「大雑把に実験をしても同じ値が得られる」という，頑健さの特徴が非常にうまく機能します．伝導度の係数である \( e^2/h\) は，電気素量（電子の電荷） \(e\) と Planck 定数 \(h\) だけから定まります．いずれも，物理学において極めて基礎的な定数です．そして，実際に実験をすると，トポロジーを背景に持つ測定値の頑健さによって，この値（だいたい \(10^{-5}\) 程度）が，実験器具の精度にかかわらず極めて精密に測定できます．実は，現在我々が採用しているキログラムの定義は，この実験結果をもとにしているのです．
+    </p>
+
+    <p>
+      トポロジーという抽象的な数学は，それ自体で独立した価値を持っていると私は確信していますが，実はそれだけではなく，我々の生活に根ざしたものごとの土台にも確かになっているという，一例をご紹介しました．
+    </p>
+
+</section>
+</div>
 </body>
 </html>
