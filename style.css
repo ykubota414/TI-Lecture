@@ -321,3 +321,49 @@ video {
     box-shadow: none;
   }
 }
+
+.click-note {
+  position: relative;
+  display: inline-block;
+}
+
+.click-note-button {
+  padding: 0;
+  border: 0;
+  border-bottom: 1px dotted currentColor;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.click-note-popup {
+  position: fixed;
+  z-index: 1000;
+
+  /* width and left edge are set from .lecture-content by JavaScript */
+  width: 320px;
+  left: 0;
+  top: 0;
+
+  max-height: min(70vh, 620px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 16px 18px;
+  border: 1px solid #999;
+  border-radius: 8px;
+
+  background: #fff;
+  color: #222;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.6;
+  text-align: left;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.click-note-popup[hidden] {
+  display: none;
+}

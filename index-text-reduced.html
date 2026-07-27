@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一般講演「現象の中のトポロジー」</title>
+  <meta name="robots" content="noindex, nofollow, noimageindex">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+<link rel="stylesheet" href="style.css">
+
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]],
+        packages: {"[+]": ["color"]}
+      },
+      loader: {load: ["[tex]/color"]},
+      svg: {fontCache: "global"}
+    };
+  </script>
+  <script type="text/javascript" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style type="text/css">
+    #page-navigation {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 9px;
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+      font-family: sans-serif;
+    }
+    #page-navigation button {
+      min-width: 42px;
+      min-height: 36px;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 7px;
+      background: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    #page-navigation button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+    #page-indicator {
+      min-width: 52px;
+      text-align: center;
+      font-size: 13px;
+    }
+    @media print {
+      #page-navigation { display: none; }
+    }
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">　</span></p>
+<h1 style="margin: 0 0 16.1px; font: 24s.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>一般講演　"現象の中のトポロジー"</b></span></h1>
+<h3 style="margin: 0 0 14.0px; font: 18.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>窪田　陽介</b></span><span class="s3"><b> </b></span><span class="s1"><b>（京都大学）</b></span></h3>
+
+<div class="lecture-content">
+<section>
+<p>本講義の資料は: </p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/qrcode_TIlecture.png"
+    alt="画像"
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<h2>1. ばねの振動の力学</h2>
+<h3>高校物理におけるばね</h3>
+<p>壁と質点をばねでつなぐと，運動方程式は</p>
+<div class="display-math">
+      \[
+      mx''(t)=-kx(t)
+      \]
+    </div>
+<p>この方程式の解は</p>
+<div class="display-math">
+      \[
+      x(t)=A\sin\left(\sqrt{\frac{k}{m}}\,t+\theta\right)
+      \]
+    </div>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/simple_harmonic_motion.mp4"
+    controls
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<h3>連成ばね</h3>
+<p>次に，質点とばねをたくさんつなぐ．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/coupled_spring.png"
+    alt="画像"
+    width="900"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>運動方程式は</p>
+<div class="display-math">
+      \[
+      \begin{array}{rccccccc}
+      mx_1'' = &amp; -2kx_1 &amp; +kx_2 &amp; &amp;&amp;&amp;&amp; \textcolor{red}{+kx_n} \\
+      mx_2'' = &amp; +kx_1 &amp; -2kx_2 &amp; +kx_3 &amp;&amp;&amp;&amp; \\
+      mx_3'' = &amp; &amp; +kx_2 &amp; -2kx_3 &amp; +kx_4 &amp;&amp;&amp; \\
+      mx_4'' = &amp; &amp;&amp; +kx_3 &amp; -2kx_4 &amp; +kx_5 &amp;&amp; \\
+      \vdots &amp; &amp; &amp; &amp; \ddots &amp; \ddots &amp; \ddots &amp; \\
+      mx_{n-1}'' = &amp; &amp;&amp;&amp;&amp; +kx_{n-2} &amp; -2kx_{n-1} &amp; +kx_n \\
+      mx_n'' = &amp; \textcolor{red}{+kx_1} &amp;&amp;&amp;&amp; &amp; +kx_{n-1} &amp; -2kx_n
+      \end{array}
+      \]
+    </div>
+<p>大きな連立微分方程式だが，<strong>線形代数</strong>を使うと解くことができる．</p>
+<p>基本となる \(n\) 個の解が存在．<strong>固有振動</strong>と呼ぶ．</p>
+<div class="display-math">
+      \[
+      x_{r,j}(t)
+      =
+      \sin\left(\frac{2\pi rj}{n}-\omega_rt+\theta\right),
+      \qquad
+      \omega_r
+      =
+      2\sqrt{\frac{k}{m}}
+      \left|\sin\left(\frac{\pi r}{n}\right)\right|
+      \]
+    </div>
+<p>\(\omega_r\) を<strong>固有振動数</strong>と呼ぶ．値が大きいほど速く振動．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/coupled_spring.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>明るい部分ほど振幅が大きく，縦軸は \(\omega^2\) ．</p>
+<p>一般の運動は，固有振動の重ね合わせ</p>
+<div class="display-math">
+      \[
+      x_j(t)
+      =
+      \sum_{r=1}^{n}A_rx_{r,j}(t)
+      =
+      \sum_{r=1}^{n}A_r
+      \sin\left(\frac{2\pi rj}{n}-\omega_rt+\theta_r\right)
+      \]
+    </div>
+</section>
+<hr class="page-break"/>
+<section>
+<h2>2. SSH（Su–Schrieffer–Heeger）模型</h2>
+
+<p>今度は，強いばねと弱いばねを交互につなぐ．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/SSH.png"
+    alt="画像"
+    width="1000"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>\(k_1,k_2\): ばね定数，\(x_1,y_1,x_2,y_2,\ldots\): 質点の位置，\(K=k_1+k_2\)．</p>
+<p>運動方程式は</p>
+<div class="display-math">
+      \[
+      \begin{array}{rcccccccc}
+      mx_{1}^{\prime\prime} =
+      &amp; -Kx_1 &amp; +\textcolor{blue}{k_1}y_1
+      &amp;&amp;&amp;&amp;&amp;&amp; \textcolor{red}{+\textcolor{teal}{k_2}y_n}
+      \\
+      my_{1}^{\prime\prime} =
+      &amp; +\textcolor{blue}{k_1}x_1 &amp; -Ky_1 &amp; +\textcolor{teal}{k_2}x_2
+      &amp;&amp;&amp;&amp;&amp;
+      \\
+      mx_{2}^{\prime\prime} =
+      &amp;&amp; +\textcolor{teal}{k_2}y_1 &amp; -Kx_2 &amp; +\textcolor{blue}{k_1}y_2
+      &amp;&amp;&amp;&amp;
+      \\
+      my_{2}^{\prime\prime} =
+      &amp;&amp;&amp; +\textcolor{blue}{k_1}x_2 &amp; -Ky_2 &amp; +\textcolor{teal}{k_2}x_3
+      &amp;&amp;&amp;
+      \\
+      \vdots
+      &amp;&amp;&amp;&amp; \ddots &amp; \ddots &amp; \ddots
+      &amp;&amp;
+      \\
+      mx_{n}^{\prime\prime} =
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{teal}{k_2}y_{n-1} &amp; -Kx_n &amp; +\textcolor{blue}{k_1}y_n
+      \\
+      my_{n}^{\prime\prime} =
+      &amp; \textcolor{red}{+\textcolor{teal}{k_2}x_1}
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{blue}{k_1}x_n &amp; -Ky_n
+      \end{array}
+      \]
+    </div>
+<hr class="page-break"/>
+<p>このときの固有振動は</p>
+<div class="display-math">
+      \[
+      \begin{aligned}
+      x_{j,-}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,-}t+\theta\right),
+      &amp;\quad
+      y_{j,-}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,-}t+\theta-\phi_r\right),
+      \\
+      x_{j,+}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,+}t+\theta\right),
+      &amp;
+      y_{j,+}(t)={}&amp;\sin\left(\frac{2\pi rj}{n}-\omega_{r,+}t+\theta-\phi_r\right)
+      \end{aligned}
+      \]
+    </div>
+<p>（\(\phi_r\) と \(\omega_{r,\pm}\) はあとで説明．）
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/periodic_SSH.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+固有振動数は高低ふたつの区間に分離し，中間に空白ができる．</p>
+<hr class="page-break"/>
+<p>赤字項がある場合を<strong>周期端</strong>，ない場合を<strong>固定端</strong>と呼ぶ．SSH 模型では，両者に明確な差が現れる．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/Dirichlet_SSH.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>空白の中央にふたつの固有振動．これらは左右の端に局在する特殊な振動（<strong>端振動</strong>と呼ぶ）．</p>
+<p>\(k_2\) を変えると，端振動の有無が切り替わります．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/SSH_spec.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<p>切り替わりは \(k_1=k_2\) で起こる．このとき，高低ふたつの固有振動数区間が接する．</p>
+</section>
+<hr class="page-break"/>
+<section>
+<p>SSH 模型の背後には，\((k_1,0)\) を中心とする半径 \(k_2\) の<strong>円周</strong>が隠れている．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/ssh_winding_number.png"
+    alt="画像"
+    width="1000"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>円周上に等間隔な点 \(\mathrm{A}_1,\ldots,\mathrm{A}_n\) を取ると，</p>
+<div class="display-math">
+      \[
+      \mathrm{A}_r=
+      \left(
+      k_1+k_2\cos\frac{2\pi r}{n},
+      -k_2\sin\frac{2\pi r}{n}
+      \right)
+      \]
+    </div>
+<p>(1) 固有振動に現れる \(\omega_r\) と \(\phi_r\) は</p>
+<div class="display-math">
+      \[
+      \omega_{r,\pm}^2= \frac{K\pm |\mathrm{OA}_r|}{m} ,
+      \qquad
+      \phi_r=\angle\mathrm{POA}_r
+      \]
+    </div>
+<p>円周が原点 \(\mathrm{O}\) を通らない限り，固有振動数はふたつの区間に分離する．</p>
+<p>(2) 固定端では，周が原点 \(\mathrm{O}\) を囲むと端振動が現れます．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/ssh_curve_spec.mp4"
+    controls
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<p>同じ現象は，より一般的な方程式でも起こる．例えば，</p>
+<div class="display-math">
+      \[
+      \begin{array}{rcccccccc}
+      mx_{1}^{\prime\prime} =
+      &amp; -Kx_1 &amp; +\textcolor{blue}{k_1}y_1
+      &amp;&amp;&amp;&amp;&amp;&amp; \textcolor{red}{+\textcolor{teal}{k_2}y_n}
+      \\
+      my_{1}^{\prime\prime} =
+      &amp; +\textcolor{blue}{k_1}x_1 &amp; -Ky_1 &amp; +\textcolor{teal}{k_2}x_2
+      &amp;&amp; +\textcolor{orange}{k_3}x_3 &amp;&amp;&amp;
+      \\
+      mx_{2}^{\prime\prime} =
+      &amp;&amp; +\textcolor{teal}{k_2}y_1 &amp; -Kx_2 &amp; +\textcolor{blue}{k_1}y_2
+      &amp;&amp;&amp;&amp;
+      \\
+      my_{2}^{\prime\prime} =
+      &amp;&amp;&amp; +\textcolor{blue}{k_1}x_2 &amp; -Ky_2 &amp; +\textcolor{teal}{k_2}x_3
+      &amp;&amp;&amp;
+      \\
+      \vdots
+      &amp;&amp; +\textcolor{orange}{k_3}y_1 &amp;&amp; \ddots &amp; \ddots &amp; \ddots
+      &amp;&amp;
+      \\
+      mx_{n}^{\prime\prime} =
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{teal}{k_2}y_{n-1} &amp; -Kx_n &amp; +\textcolor{blue}{k_1}y_n
+      \\
+      my_{n}^{\prime\prime} =
+      &amp; \textcolor{red}{+\textcolor{teal}{k_2}x_1}
+      &amp;&amp;&amp;&amp;&amp;&amp; +\textcolor{blue}{k_1}x_n &amp; -Ky_n
+      \end{array}
+      \]
+    </div>
+<p>（\(K=k_1+k_2+k_3\)）．3つ隣の質点が反発し合っている．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/spring_artificial.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>対応する曲線は次の形．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/winding2_curve_plot.png"
+    alt="画像"
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+<p>この曲線は原点の周りを \(2\) 回巻いている．固定端では，左右それぞれに \(2\) 個の端振動が現れる．
+</p>
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/Dirichlet_winding2.mp4"
+    controls
+    width="700"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<p>一般に，次が成り立つ．</p>
+<ul>
+<li>方程式に対応する曲線が原点 \(\mathrm{O}\) を通らないとき，周期端（赤字項あり）の固有振動数の分布はふたつの区間に分離する．</li>
+<li>固定端（赤字項なし）において，以下の関係が成り立つ．
+<div class="display-math">
+      \[
+      (\text{左端に局在する端状態の数}) = -(\text{対応する曲線が原点\(\mathrm{O}\)の周りを巻きつく回数})
+      \]
+    </div>
+</li>
+</ul>
+<p>右辺を<strong>巻きつき数</strong>，この関係を<strong>バルク・境界対応</strong>という．</p>
+<hr class="page-break"/>
+<h2>3. トポロジーの考え方 </h2>
+    <p>巻きつき数の<strong>頑健性</strong>: 曲線を連続的に変形しても，原点を横切らない限り巻きつき数は変わらない．</p>
+<div class="video-row">
+  <video controls width="420">
+    <source src="videos/ssh_curve_spec.mp4" type="video/mp4">
+  </video>
+
+  <video controls width="420">
+    <source src="videos/winding2_curve_spec.mp4" type="video/mp4">
+  </video>
+</div>
+	<p><strong>トポロジー</strong>: 連続的に変形しても変わらない性質・量を研究する数学．</p>
+
+    <p>端振動の<strong>頑健性</strong>: ばね定数を連続的に取り替えても，端振動が連続的に消えたりはしない．端振動が消えるのは，ふたつの固有振動数区間が接し，曲線が原点を通過するとき．</p>
+    <p>ということは……<strong>適当に実験してもよい！</strong></p>
+
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/edge_to_bulk_mode.mp4"
+    controls
+    width="400"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+<hr class="page-break"/>
+<section>
+<h2>4. 量子ホール効果</h2>
+
+    <p>熱，波，量子力学は，共通する数学によって記述される．</p>
+<div class="display-math">
+      \[
+	\text{熱: } \ \frac{d\boldsymbol{x}}{dt} = -H\boldsymbol{x}, \qquad 	\text{波: } \ \frac{d^2\boldsymbol{x}}{dt^2} = -H\boldsymbol{x}, \qquad 
+	\text{量子: } \  i\hbar  \frac{d\boldsymbol{x}}{dt} = H\boldsymbol{x}.
+      \]
+    </div>
+    <p>例: SSH 模型は，ポリアセチレン中の電子を記述する模型と同じ数学的構造．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/polyacetylene.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+    <p>物性物理（量子力学）においては，二次元の場合に，さらに重要なトポロジー的現象が現れる．</p>
+
+<hr class="page-break"/>
+    <p>金属板に垂直な磁場をかけて電流を流すと，電流と直交する方向に電圧が生じる（ホール効果）．</p>
+<div style="text-align: center; margin: 24px 0;">
+  <img
+    src="videos/hall_bar.png"
+    alt="画像"
+    width="500"
+    style="max-width: 100%; height: auto;"
+  >
+</div>
+    <p>強磁場・低温では，</p>
+<div class="display-math">
+      \[
+	\sigma_{\mathrm{Hall}} = \frac{I}{V} = n \cdot \frac{e^2}{h} \qquad (\text{\( n \) はある整数})
+	\]
+    </div>
+    <p>これを<strong>量子ホール効果</strong>と呼ぶ．</p>
+
+    <p>境界条件を変えると，次の違いが現れる．</p>
+
+    <ul>
+      <li>
+        周期端（赤字項あり）の場合，固有振動数はふたつの区間内に密に分布する．
+      </li>
+      <li>
+        固定端（赤字項なし）の場合，ふたつの区間の間の空白が新たに生じた固有振動数によって埋まる．
+      </li>
+    </ul>
+
+    <p>固定端において空白内に新しく現れる状態は: </p>
+
+<div style="text-align: center; margin: 24px 0;">
+  <video
+    src="videos/haldane_wavepacket.mp4"
+    controls
+    width="600"
+    style="max-width: 100%; height: auto;"
+  >
+    お使いのブラウザは動画の再生に対応していません．
+  </video>
+</div>
+
+    <p>波のかたまりが境界を一方向に進み，電流を運ぶ．その個数は整数 \( \leadsto \) 伝導度の整数性．</p>
+
+<hr class="page-break"/>
+	<p>量子ホール効果も，方程式の背後にある図形によって制御されている．</p>
+	<p>平面内の曲線</p>
+	<p>高次元空間 \(X\) の中に像を結ぶ曲面（2次元空間）．例えば \(X\) は，次の関係式で定まる空間．</p>
+<div class="display-math">
+\[
+\begin{array}{lll}
+a^2+x_1^2+y_1^2+x_2^2+y_2^2=a, &b^2+x_1^2+y_1^2+x_3^2+y_3^2=b,&c^2+x_2^2+y_2^2+x_3^2+y_3^2=c,\\
+(a+b-1)x_1+x_2x_3+y_2y_3=0,& (a+b-1)y_1+y_2x_3-x_2y_3=0,&(a+c-1)x_2+x_1x_3-y_1y_3=0,\\
+(a+c-1)y_2+x_1y_3+y_1x_3=0,&(b+c-1)x_3+x_1x_2+y_1y_2=0,&(b+c-1)y_3+x_1y_2-y_1x_2=0
+\end{array}
+\]
+</div>
+	<p>これは9次元空間内の4次元部分空間．</p>
+	<p>この設定で「巻きつき」を数える整数がある（<strong>Chern数</strong>）．この整数が \(\sigma_{\mathrm{Hall}}\) の係数になる．</p>
+
+<hr class="page-break"/>
+    <p> 最後に: 量子ホール効果の役に立つ側面の話．</p>
+    <p> <strong>ホール伝導度の頑健性</strong>: 「大雑把に実験をしても同じ値が得られる」．</p>
+    <p> 伝導度の係数 \( e^2/h\) :  \(e\) は電気素量（電子の電荷）， \(h\)  Planck 定数．いずれもすごく重要．</p>
+    <p> 実際に実験をすると，トポロジーを背景に持つ測定値の頑健さによって，この値（だいたい \(10^{-5}\) 程度）が，実験器具の精度にかかわらず極めて精密に測定できる！
+    <p>実は，現在我々が採用している<strong>キログラムの定義は，この実験結果をもとにしている</strong>．
+    </p>
+
+    <p>
+      トポロジーという抽象的な数学は，それ自体で独立した価値を持っているが，実はそれだけではなく，我々の生活に根ざしたものごとの土台にも確かになっているという一例．
+    </p>
+
+</section>
+</div>
+
+<div id="page-navigation" aria-label="ページ送り">
+  <button id="previous-page" type="button" aria-label="前のページ">&#9664;</button>
+  <span id="page-indicator"></span>
+  <button id="next-page" type="button" aria-label="次のページ">&#9654;</button>
+</div>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function () {
+  function closeAllNotes() {
+    document.querySelectorAll(".click-note-popup").forEach(function (popup) {
+      popup.hidden = true;
+    });
+
+    document.querySelectorAll(".click-note-button").forEach(function (button) {
+      button.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function positionPopup(button, popup) {
+    var textArea = document.querySelector(".lecture-content");
+    var textRect = textArea.getBoundingClientRect();
+    var buttonRect = button.getBoundingClientRect();
+    var gap = 12;
+
+    popup.style.width = textRect.width + "px";
+    popup.style.left = textRect.left + "px";
+    popup.style.top = buttonRect.bottom + gap + "px";
+    /* If there is not enough room below, show it above the button. */
+    var popupRect = popup.getBoundingClientRect();
+    if (popupRect.bottom > window.innerHeight - 12) {
+      var top = Math.max(12, buttonRect.top - popupRect.height - gap);
+      popup.style.top = top + "px";
+    }
+  }
+
+  document.querySelectorAll(".click-note-button").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+
+      var popup = button.nextElementSibling;
+      var willOpen = popup.hidden;
+
+      closeAllNotes();
+
+      if (willOpen) {
+        popup.hidden = false;
+        positionPopup(button, popup);
+        button.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  document.querySelectorAll(".click-note-popup").forEach(function (popup) {
+    popup.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  });
+
+  document.addEventListener("click", closeAllNotes);
+  window.addEventListener("resize", closeAllNotes);
+  window.addEventListener("scroll", closeAllNotes, { passive: true });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeAllNotes();
+    }
+  });
+});
+</script>
+</body>
+</html>

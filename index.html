@@ -9,7 +9,6 @@
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2487.7">
 <link rel="stylesheet" href="style.css">
-
   <script type="text/javascript">
     window.MathJax = {
       tex: {
@@ -343,7 +342,22 @@
 <p>これらふたつの例を含む，たいへん一般的な事実として，この種の微分方程式においては，次が成り立ちます．</p>
 <ul>
 <li>方程式に対応する曲線が原点 \(\mathrm{O}\) を通らないとき，周期端（赤字項あり）の固有振動数の分布はふたつの区間に分離する．</li>
-<li>固定端（赤字項なし）において，以下の関係が成り立つ（注意）．
+<li>固定端（赤字項なし）において，以下の関係が成り立つ（
+<span class="click-note">
+  <button type="button" class="click-note-button" aria-expanded="false">注意</button>
+  <span class="click-note-popup" hidden>
+    この説明はかなり端折っています．より正確には，成り立つ等式は
+<div class="display-math">
+      \[
+	\begin{aligned}
+      {}&{} (\text{左端に局在するAサイトの端状態の数}) - (\text{左端に局在するBサイトの端状態の数}) \\
+	 ={}&{} -(\text{対応する曲線が原点\(\mathrm{O}\)の周りを巻きつく回数})
+	\end{aligned}
+      \]
+    </div>
+      です．ここで，AサイトとBサイトというのは，上の絵でいう白丸と黒丸のことです．上にある固有振動の動画を見ると，左に局在している端状態はAサイトだけで振動していることがわかると思います．
+  </span>
+</span>）．
 <div class="display-math">
       \[
       (\text{左端に局在する端状態の数}) = -(\text{対応する曲線が原点\(\mathrm{O}\)の周りを巻きつく回数})
@@ -514,8 +528,70 @@ a^2+x_1^2+y_1^2+x_2^2+y_2^2=a, &b^2+x_1^2+y_1^2+x_3^2+y_3^2=b,&c^2+x_2^2+y_2^2+x
     <p>
       トポロジーという抽象的な数学は，それ自体で独立した価値を持っていると私は確信していますが，実はそれだけではなく，我々の生活に根ざしたものごとの土台にも確かになっているという，一例をご紹介しました．
     </p>
-
 </section>
 </div>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function () {
+  function closeAllNotes() {
+    document.querySelectorAll(".click-note-popup").forEach(function (popup) {
+      popup.hidden = true;
+    });
+
+    document.querySelectorAll(".click-note-button").forEach(function (button) {
+      button.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function positionPopup(button, popup) {
+    var textArea = document.querySelector(".lecture-content");
+    var textRect = textArea.getBoundingClientRect();
+    var buttonRect = button.getBoundingClientRect();
+    var gap = 12;
+
+    popup.style.width = textRect.width + "px";
+    popup.style.left = textRect.left + "px";
+    popup.style.top = buttonRect.bottom + gap + "px";
+    /* If there is not enough room below, show it above the button. */
+    var popupRect = popup.getBoundingClientRect();
+    if (popupRect.bottom > window.innerHeight - 12) {
+      var top = Math.max(12, buttonRect.top - popupRect.height - gap);
+      popup.style.top = top + "px";
+    }
+  }
+
+  document.querySelectorAll(".click-note-button").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+
+      var popup = button.nextElementSibling;
+      var willOpen = popup.hidden;
+
+      closeAllNotes();
+
+      if (willOpen) {
+        popup.hidden = false;
+        positionPopup(button, popup);
+        button.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  document.querySelectorAll(".click-note-popup").forEach(function (popup) {
+    popup.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  });
+
+  document.addEventListener("click", closeAllNotes);
+  window.addEventListener("resize", closeAllNotes);
+  window.addEventListener("scroll", closeAllNotes, { passive: true });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeAllNotes();
+    }
+  });
+});
+</script>
 </body>
 </html>
