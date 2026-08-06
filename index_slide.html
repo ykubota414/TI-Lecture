@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex, nofollow, noimageindex">
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2487.7">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style_slide.css">
 
   <script type="text/javascript">
     window.MathJax = {
@@ -66,6 +66,10 @@
 <p class="p1"><span class="s1">　</span></p>
 <h1 style="margin: 0 0 16.1px; font: 24s.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>一般講演　"現象の中のトポロジー"</b></span></h1>
 <h3 style="margin: 0 0 14.0px; font: 18.0px 'Hiragino Mincho ProN'; -webkit-text-stroke: #000000"><span class="s1"><b>窪田　陽介</b></span><span class="s3"><b> </b></span><span class="s1"><b>（京都大学）</b></span></h3>
+<p class="update-time">
+  <time datetime="2026-07-28">2026年7月28日</time>（最終更新：<time datetime="2026-08-06">2026年8月6日</time>）
+</p>
+
 
 <div class="lecture-content">
 <section>
@@ -80,6 +84,15 @@
 </div>
 <hr class="page-break"/>
 <h2>1. ばねの振動の力学</h2>
+<h3>前提</h3>
+<ul>
+<li> 数学は，大まかには代数・幾何・解析に分類される．</li>
+<li> <strong>微分方程式</strong>という数学的対象がある．</li>
+<li> 微分方程式を解くというのは，解析学における重要トピック．</li>
+<li> 例えば 2 次方程式を解くと，その解として得られるのは数であるが，<strong>微分方程式を解くと関数が得られる</strong>．</li>
+<li> 微分方程式は次のように使える: なにか（例: 物体の位置）が<strong>時事刻々と変化していく様子</strong>を，時間の関数 \( x(t) \) として求める．</li>
+</ul>
+<p>今日のテーマ：<strong>ある微分方程式の数学的構造の背後に，やわらかい幾何学（トポロジー）によって研究できるような構造を発見することができる</strong>．</p>
 <h3>高校物理におけるばね</h3>
 <p>壁と質点をばねでつなぐと，運動方程式は</p>
 <div class="display-math">
@@ -277,17 +290,7 @@
     style="max-width: 100%; height: auto;"
   >
 </div>
-<p>円周上に等間隔な点 \(\mathrm{A}_1,\ldots,\mathrm{A}_n\) を取ると，</p>
-<div class="display-math">
-      \[
-      \mathrm{A}_r=
-      \left(
-      k_1+k_2\cos\frac{2\pi r}{n},
-      -k_2\sin\frac{2\pi r}{n}
-      \right)
-      \]
-    </div>
-<p>(1) 固有振動に現れる \(\omega_r\) と \(\phi_r\) は</p>
+<p>(1) 固有振動に現れる \(\omega_r\) と \(\phi_r\) を使って</p>
 <div class="display-math">
       \[
       \omega_{r,\pm}^2= \frac{K\pm |\mathrm{OA}_r|}{m} ,
@@ -295,7 +298,8 @@
       \phi_r=\angle\mathrm{POA}_r
       \]
     </div>
-<p>円周が原点 \(\mathrm{O}\) を通らない限り，固有振動数はふたつの区間に分離する．</p>
+<p>を満たすようにプロットすると，円周上に等間隔な点 \(\mathrm{A}_1,\ldots,\mathrm{A}_n\) が現れる．</p>
+<p>特に，円周が原点 \(\mathrm{O}\) を通らない限り，固有振動数はふたつの区間に分離する．</p>
 <p>(2) 固定端では，周が原点 \(\mathrm{O}\) を囲むと端振動が現れる．</p>
 <div style="text-align: center; margin: 24px 0;">
   <video
@@ -374,6 +378,7 @@
 <hr class="page-break"/>
 <p>一般に，次が成り立つ．</p>
 <ul>
+<li>ある種の微分方程式には，その解法の中である平面曲線が像を結ぶ．</li>
 <li>方程式に対応する曲線が原点 \(\mathrm{O}\) を通らないとき，周期端（赤字項あり）の固有振動数の分布はふたつの区間に分離する．</li>
 <li>固定端（赤字項なし）において，以下の関係が成り立つ．
 <div class="display-math">
